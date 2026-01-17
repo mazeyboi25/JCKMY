@@ -1,5 +1,7 @@
 def add(a,b) # ADDITION function
     return a + b
+def subtract(a, b): # SUBTRACTION function
+    return a - b 
 
 while True:
     try:
@@ -18,8 +20,12 @@ while True:
         if choice == "1":
             result = add(num1, num2)
             print(f"Result: {result}")
+        elif choice == "2":
+            result = subtract(num1, num2)
+            print(f"Result: {result}")
         else:
             print("Invalid choice. Please select from 1, 2, 3, 4.")
+        
 
     except ValueError:
         print("Invalid input. Please enter numeric values.")
