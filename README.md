@@ -1,3 +1,11 @@
+3. Table
+| Method           | Execution Order        | GWA Output            | Execution Time |
+|------------------|------------------------|-----------------------|----------------|
+| Multithreading   | Non-deterministic      |    82.38              | 0.1032 seconds |
+| Multiprocessing  | Non-deterministic      | Correct GWA displayed |                |
+
+
+4. README.md Questions
 1. Which approach demonstrates true parallelism in Python? Explain.
 - Multiprocessing demonstrates true parallelism in Python because each process has its own Python interpreter and CPU core, avoiding the Global Interpreter Lock (GIL).
 2. Compare execution times between multithreading and multiprocessing.

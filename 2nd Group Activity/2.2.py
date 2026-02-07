@@ -1,0 +1,43 @@
+from multiprocessing import Process, Manager
+import time
+
+def compute_gwa_process(grades, results, index):
+    time.sleep(0.1)  # simulate work
+    gwa = sum(grades) / len(grades)
+    results[index] = gwa
+    print(f"[Process-{index}] GWA = {gwa:.2f}")
+
+if __name__ == "__main__":
+    n = int(input("Enter number of subjects: "))
+    grades = []
+
+    for i in range(n):
+        grade = float(input(f"Enter grade for subject {i+1}: "))
+        grades.append(grade)
+
+    manager = Manager()
+    results = manager.dict()
+    processes = []
+
+    start_time = time.time()
+
+    for i in range(len(grades)):
+        p = Process(
+            target=compute_gwa_process,
+            args=([grades[i]], results, i)
+        )
+        processes.append(p)
+        p.start()
+
+    for p in processes:
+        p.join()
+
+    end_time = time.time()
+
+    print("\nMultiprocessing Execution Time:",
+          end_time - start_time, "seconds")
+                
+    print("Final GWA:", sum(results.values()) / len(results))
+                
+
+    
