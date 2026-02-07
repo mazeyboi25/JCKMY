@@ -37,3 +37,9 @@ if __name__ == "__main__":
     print("\nAll threads finished.")
     print(f"Overall GWA (all subjects): {gwa:.2f}")
     print(f"Multithreading Execution Time: {end_time - start_time:.4f} seconds")
+
+# Each subject grade in the multithreading version is managed by an individual thread that operates separately from the others. 
+# The operating system plans for all threads to run simultaneously when they are first initiated, which means that their execution 
+# and completion times may differ. This results in a non-deterministic order of outcomes, with each thread printing its output as 
+# soon as it finishes. Following the completion of each thread, the computer calculates and shows the overall GWA, making sure that 
+# all subject grades appear in the final output.
